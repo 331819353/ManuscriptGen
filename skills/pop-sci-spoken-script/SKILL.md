@@ -51,7 +51,7 @@ flowchart TD
 * **Step 5A（三维默念自检）**：依[反 AI 味与活人感第一性原理](references/anti-ai-dehumanization.md)第 3 节，从“听觉习惯、观众吸引力、活人感”默念通读并局部改写。
 * **Step 5B（双模式量化脚本校验）**：将模块四纯净提词稿传给 [口播指标校验脚本](scripts/check_spoken_metrics.py)：
   ```bash
-  python3 .agents/skills/pop-sci-spoken-script/scripts/check_spoken_metrics.py \
+  python3 skills/pop-sci-spoken-script/scripts/check_spoken_metrics.py \
     --mode <hook|companion> --target-seconds <目标秒数> --pace standard --strict \
     --banned-phrases "往期套词1,往期套词2" < script.txt
   ```
