@@ -1,6 +1,6 @@
 ---
 name: pop-sci-spoken-script
-description: Use this skill when the user wants to plan, design, or write a spoken script (口播剧本、科普口播逐字稿、短视频或中长视频/视频播客文案). Guides a lean, ear-first craft workflow grounded in authentic speaker perspective, natural narrative flow (both crisp explainers and unhurried reflective monologues), lived details, and objective teleprompter readiness checks.
+description: Use this skill when the user wants to plan, design, or write a spoken script (口播剧本、科普口播逐字稿、短视频或中长视频/视频播客文案). Guides a lean, ear-first craft workflow grounded in authentic speaker perspective, clear narrative anchors, artful transitions, interactive spoken presence, natural narrative flow (both crisp explainers and unhurried reflective monologues), lived details, and objective teleprompter readiness checks.
 ---
 
 # 口播剧本创作技能（Spoken Script Craft）
@@ -9,7 +9,7 @@ description: Use this skill when the user wants to plan, design, or write a spok
 
 **极简原则：少填表、少分类，把注意力留给真实的人话、细节与思绪流。**
 
-## 创作四步法
+## 创作五步法
 
 ### 1. 用 3–5 行定清说话处境（先对齐核心，不填大表）
 动手前先定清楚下面几件事：
@@ -19,19 +19,29 @@ description: Use this skill when the user wants to plan, design, or write a spok
 * **真实素材切口（走心/经验类选题优先）**：写个人经历、关系或深度反思类口播时，优先请用户提供 1–2 个自己的真实困惑、踩坑或笨拙瞬间，围绕真素材展开；**绝不凭空杜撰煽情假回忆**（若无私人素材，则坦诚用观察者/经验视角平实讲述）。
 * **体量与边界**：目标平台/大概时长，以及不可越界的事实合规底线（不做虚假研究与绝对化承诺）。
 
-> 若用户未给出说话视角、大概时长、走心选题的关键真素材，或指定路线有现实矛盾，先用几行简短对齐确认；信息明确则直接起稿。
+> 若用户未给出说话视角、大概时长、走心选题的关键真素材，或指定路线有现实矛盾，先用几行简短对齐确认；信息明确则定好叙事点后直接起稿。
 
-### 2. 按活人心法一气呵成写正文
+### 2. 提前找好叙事点与过渡暗线（先立骨架，再发散）
+动笔写逐字稿前，先用几行简短要点立住这期文案的骨架（不填大表，正文里也绝不读成“第一、第二”的 PPT 路标）：
+* **分几部分**：按体量定好节奏（短口播 2–3 部分，中长口播 3–5 部分为宜，宁少勿杂）。
+* **每部分的叙事点与展开方式**：每部分用一句话定清核心话题是什么、打算怎么展开探讨（用什么具体生活切片、实验/观察视角或思辨/个人判断落点）。
+* **相邻部分的自然接榫**：提前想好两段之间靠什么意象、轻追问、视角翻面或情绪余温渡过去，绝不临时抓“前一阵 / 以前啊 / 年轻的时候”硬切下一段。
+* **先锚后散**：写正文时围绕定好的叙事点向外适度发散漫聊，散出去半步后顺着暗线稳稳落回主脉络。
+
+### 3. 围绕叙事点，按活人心法一气呵成写正文
 * 参照 [口播创作心法](references/craft-principles.md)，让语言顺着人的真实思绪自然流淌——该快则利落，该慢则从容。
-* 核心聚焦三件事：**低姿态真诚**、**真故事或纵深心理张力**（优先用可核验的真实公案/经典实验或共通微观心理写透“同体两面”，并留出哲学思辨余味；多阶段路线题再做网状对照）、**耳朵听得进的活人话**。不强套固定风格标签、百分比骨架或圈层黑话表。
+* 核心聚焦几件事：**低姿态真诚**、**围绕叙事点的纵深展开与自然接榫**、**真故事或纵深心理张力**（优先用可核验的真实公案/经典实验或共通微观心理写透“同体两面”，并留出哲学思辨余味；多阶段路线题再做网状对照）、**不端着、不刻意精炼、有交互感的贴耳活人话**。不强套固定风格标签、百分比骨架或圈层黑话表。
 
-### 3. 默念一遍，做局部顺嘴打磨
+### 4. 默念一遍，做局部顺嘴打磨
 像真坐在镜头前对着人小声念一遍：
-* 哪句一口气念不下来、拗口发书面、像在教育人、或结尾忍不住想喊口号升华，只精准改写或删掉那几句；
+* 哪句一口气念不下来、拗口发书面、像在教育人、刚写完细节就忍不住下总结，或结尾想喊口号升华，只精准改写或删掉那几句；
+* 检查**有没有“精炼干练癖”**：凡是看着用词很凝练、像散文短句或把日常念头硬拧成文雅比喻的地方，都摊开改回正常人张嘴会说的平实大白话，留住聊天原本的松散感；
+* 检查**前后衔接与口癖**：看有没有反复用“前一阵 / 以前啊 / 年轻的时候”起头硬切；若有，删掉时间起手式，改用意象承接、轻追问或直接入画自然渡过去；
+* 检查**交互温度**：看整段念出来是不是像自说自话念散文；在共鸣处或话题拐弯处，结合上文具体情景自然生出简短轻互动（不套固定词表或固定口头禅），拉近与屏幕前观众的距离；
 * 原本松弛自然的口语段落与思考停顿，原样留住，不要为了工整而破坏语感。
 
-### 4. 轻量提词器体检（不绑架文风）
-将纯净提词稿交给 [提词器体检脚本](scripts/check_spoken_metrics.py) 做客观体检（核对预估时长、提词器禁用符号、超长憋气句、书面/AI/营销/通稿套词、机械三连排比及可选跨稿去重词）：
+### 5. 轻量提词器体检（不绑架文风）
+将纯净提词稿交给 [提词器体检脚本](scripts/check_spoken_metrics.py) 做客观体检（核对预估时长、提词器禁用符号、超长憋气句、书面/AI/营销/通稿套词、机械三连排比、重复时间起手式及可选跨稿去重词）：
 
 ```bash
 python3 skills/pop-sci-spoken-script/scripts/check_spoken_metrics.py \
@@ -43,7 +53,7 @@ python3 skills/pop-sci-spoken-script/scripts/check_spoken_metrics.py \
 ## 交付原则（正文即主角）
 
 默认只交付真正有用的三样东西，拒绝形式大于内容：
-1. **简短构思说明**（3–5 行：说话视角、主干/对照脉络、预估时长）。
+1. **简短构思说明**（简短几行：说话视角、分几部分与各部分叙事点/展开方式、预估时长）。
 2. **纯净提词器逐字稿**（无任何括号 `()（）[]【】`、斜杠 `/` 或 Markdown 符号，按呼吸停顿自然换行，复制即可开拍）。
 3. **轻量体检摘要**（实际预估时长与客观禁用项核对）。
 

@@ -114,6 +114,22 @@ RULE_CATEGORIES: list[tuple[str, str, str, RuleList]] = [
     ("brochure_cliches", "brochure_cliche_count", "宣讲通稿套词", BROCHURE_RULES),
 ]
 
+TEMPORAL_CRUTCH_RULES: RuleList = [
+    ("前一阵", re.compile(r"(前一阵子?|前阵子|前段时间)"), "改用意象承接、轻追问或直接进具体场景，少用时间起手式硬切"),
+    (
+        "以前",
+        re.compile(
+            r"(以前[啊呀呢嘛])|(?:^|[，。！？；：])\s*((?:其实|说实话)?(?:我)?以前)(?=[，、\s]|的时候|总|老|一直|觉得|以为|也|就|都|特别|挺|很|爱|喜欢)"
+        ),
+        "改用具体心境或画面前后反差过渡，避免用“以前啊”起头打补丁",
+    ),
+    ("年轻的时候", re.compile(r"(年轻的时候|年轻那会儿)"), "改用具体的当年境遇或细节切入，别反复贴时间标签"),
+    ("早些年", re.compile(r"(早些年|早年间)"), "减少空泛时间起手式，直接抛出当年具体画面或念头"),
+    ("小时候", re.compile(r"(?:^|[，。！？；：])\s*((?:我)?小时候)"), "控制“小时候”起头次数，直接从当时一件具体的事或物件说起"),
+    ("那时候", re.compile(r"(?:^|[，。！？；：])\s*(那时候)"), "直接承接上文画面或情绪余温，少用“那时候”转场"),
+    ("有一次", re.compile(r"(?:^|[，。！？；：])\s*((?:我)?(?:记得)?有(?:一次|一回|回))"), "直接把那件事的现场动作或原话抛出来，不必先报“有一次”"),
+]
+
 
 def count_spoken_units(text: str) -> tuple[float, int, int]:
     """Return (spoken_units, cjk_char_count, ascii_token_count)."""
@@ -172,6 +188,22 @@ def scan_pattern_rules(text: str, rules: RuleList) -> list[dict[str, Any]]:
                     "line": line_no,
                     "label": label,
                     "matched": match.group(0),
+                    "suggestion": suggestion,
+                })
+    return findings
+
+
+def scan_temporal_crutches(text: str) -> list[dict[str, Any]]:
+    """Match temporal transition crutches line-by-line without leading punctuation."""
+    findings: list[dict[str, Any]] = []
+    for line_no, line in enumerate(text.splitlines(), start=1):
+        for label, pattern, suggestion in TEMPORAL_CRUTCH_RULES:
+            for match in pattern.finditer(line):
+                matched = next((g for g in match.groups() if g is not None), match.group(0))
+                findings.append({
+                    "line": line_no,
+                    "label": label,
+                    "matched": matched,
                     "suggestion": suggestion,
                 })
     return findings
@@ -296,6 +328,22 @@ def analyze_script(
         unique_banned = "、".join(dict.fromkeys(item["matched"] for item in custom_hits))
         warnings.append(f"命中 {len(custom_hits)} 处自定义禁用词（{unique_banned}），请替换为当期自然表述。")
 
+    temporal_crutches = scan_temporal_crutches(text)
+    findings["temporal_crutches"] = temporal_crutches
+    metrics["temporal_crutch_count"] = len(temporal_crutches)
+    if temporal_crutches:
+        label_counts: dict[str, int] = {}
+        for item in temporal_crutches:
+            label_counts[item["label"]] = label_counts.get(item["label"], 0) + 1
+        if len(temporal_crutches) >= 3 or any(count >= 2 for count in label_counts.values()):
+            breakdown = "、".join(
+                f"{lbl}×{cnt}" if cnt > 1 else lbl for lbl, cnt in label_counts.items()
+            )
+            warnings.append(
+                f"时间起手式偏多或重复（共 {len(temporal_crutches)} 处：{breakdown}），"
+                "易显得前后衔接像流水账；建议改用意象接力、轻追问或直接入画过渡。"
+            )
+
     if broadcast_count > 0 and broadcast_count > direct_you_count:
         found_terms = "、".join(dict.fromkeys(broadcast_matches))
         warnings.append(f"群指播音感偏重：群指词（{found_terms}，共 {broadcast_count} 次）多于单数“你”（{direct_you_count} 次），建议改回单数“你”。")
@@ -326,7 +374,7 @@ def format_markdown(report: dict[str, Any]) -> str:
         lines.append(f"- **目标时长**：目标 {dc['target_seconds']}s（区间 {lo}s–{hi}s），当前 {dc['estimated_seconds']}s（{flag}）")
     lines.extend([
         f"- **气口检查**：共 {m['clause_count']} 个气口，最长单气口 {m['max_clause_units']} 单位（上限 {m['max_clause_limit']}）",
-        f"- **客观禁用项**：书面语 {m['written_cliche_count']} ｜ AI套词 {m['ai_slop_count']} ｜ 营销套话 {m['mcn_cliche_count']} ｜ 通稿词 {m['brochure_cliche_count']} ｜ 无灵主语 {m['inanimate_nominalization_count']} ｜ 三连排比 {m['triadic_symmetry_count']} ｜ 自定义禁词 {m['custom_banned_count']}",
+        f"- **客观禁用项**：书面语 {m['written_cliche_count']} ｜ AI套词 {m['ai_slop_count']} ｜ 营销套话 {m['mcn_cliche_count']} ｜ 通稿词 {m['brochure_cliche_count']} ｜ 无灵主语 {m['inanimate_nominalization_count']} ｜ 三连排比 {m['triadic_symmetry_count']} ｜ 时间起手式 {m['temporal_crutch_count']} ｜ 自定义禁词 {m['custom_banned_count']}",
         f"- **对话感参照**：单数“你” {m['direct_you_count']} 次 vs 群指词 {m['broadcast_term_count']} 次",
     ])
     if report["warnings"]:
